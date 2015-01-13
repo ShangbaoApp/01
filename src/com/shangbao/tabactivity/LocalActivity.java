@@ -36,6 +36,7 @@ import com.shangbao.util.Column;
 import com.shangbao.util.News;
 import com.shangbao.utl.GetNewsList;
 
+import android.R.integer;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -92,7 +93,7 @@ public class LocalActivity extends Activity {
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
 				// TODO Auto-generated method stub
 				//Toast.makeText(this, "下拉刷新",Toast.LENGTH_SHORT).show();
-				Log.e("+++-88888888--+++", "000000000"+columns.size());
+				//Log.e("+++-88888888--+++", "000000000"+columns.size());
 				new GetDatas(null).execute();
 			}
 			
@@ -117,7 +118,7 @@ public class LocalActivity extends Activity {
                 long id) {
             // TODO Auto-generated method stub
             Intent intent = new Intent(LocalActivity.this,DetailPageActivity.class);
-            Log.e("11111111111",position+"+++00000000++"+id);  
+           // Log.e("11111111111",position+"+++00000000++"+id);  
             intent.putExtra("column",columns.get(position));
             startActivity(intent);
         }
@@ -140,13 +141,13 @@ public class LocalActivity extends Activity {
 
 		@Override
 		public int getCount() {
-			Log.e("++++++++++++++ooooo", ""+columns.size());
+			//Log.e("++++++++++++++ooooo", ""+columns.size());
 			return columns.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			Log.e("++++++++++++++ooooo", ""+columns.size());
+			//Log.e("++++++++++++++ooooo", ""+columns.size());
 			return position;
 		}
 
@@ -222,25 +223,29 @@ public class LocalActivity extends Activity {
 				default:
 					break;
 				}
-				viewNews.setOnClickListener(new ItemListener(i));
+				
+				viewNews.setOnClickListener(new ItemListener(i,position));
 				viewHolder.layouts[i+1].addView(viewNews);
 			}
 			//viewHolder.news2_layout.removeAllViews();
 			//viewHolder.news2_layout.addView(view2);
-			Log.e("++++++++++++++ooooo", ""+columns.size());
+			Log.e("----Position:---",""+position);
+			//Log.e("++++++++++++++ooooo", ""+columns.size());
 			return view;
 		}
 		 
 		  class ItemListener implements OnClickListener {  
 	            private int m_position;  
+	            private int p=1;  
 	  
-	            ItemListener(int pos) {  
+	            ItemListener(int pos,int position) {  
 	                m_position = pos;  
+	               // p = position;
 	            }  
 	              
 	            @Override  
 	            public void onClick(View v) {  
-	                Log.e("MyListView-click", "line:" + m_position + ":"+ v.getTag());  
+	                Log.e("MyListView-click", "line:" + m_position + "\t:"+ p);  
 	            }  
 	        }  
 	}
@@ -265,7 +270,7 @@ public class LocalActivity extends Activity {
 
 			@Override
 			protected void onPostExecute(Integer result) {  
-				Log.e("+++88888++++", columns.size()+"");
+				//Log.e("+++88888++++", columns.size()+"");
 				adapter.notifyDataSetChanged();
 				mPullRefreshListView.onRefreshComplete();
 			}
@@ -280,7 +285,7 @@ public class LocalActivity extends Activity {
 					JSONObject jsonobject = new JSONObject(strResult);
 					JSONArray contentColumns = jsonobject.getJSONArray("contentColumns");
 					//
-					Log.e("+-+-+-+-+-",""+contentColumns.length());
+					//Log.e("+-+-+-+-+-",""+contentColumns.length());
 					for (int i = 0; i < contentColumns.length(); i++) {
 						Column column = new Column();
 						List<News> nList = new ArrayList<News>();
@@ -294,18 +299,18 @@ public class LocalActivity extends Activity {
 							JSONArray picUrlArray = content.getJSONArray("picUrl");
 							for (int k = 0; k < picUrlArray.length(); k++) {
 								nws.add("http://192.168.1.119:8080/Shangbao01"+picUrlArray.get(k).toString());
-								Log.e("______-----___", picUrlArray.get(k).toString());
+								//Log.e("______-----___", picUrlArray.get(k).toString());
 							}
 							//content.getJSONArray("picUrl").
 							nws.summary = content.getString("summary");
 							nList.add(nws);
 							//可以获得数组字符串
 							//Log.e("___++++nws.title+++___",content.getJSONArray("picUrl").get(0).toString());
-							Log.e("___++++nws.summary+++___",nws.summary);
+							//Log.e("___++++nws.summary+++___",nws.summary);
 							
 						}
 						column.newsList = nList;
-						Log.e("++++++++++++++88888", ""+columns.size());
+						//Log.e("++++++++++++++88888", ""+columns.size());
 						columns.add(column);
 						//titles.add(content.getString("title"));
 						//pictureUrls.add("http://192.168.1.119:8080/Shangbao01"+content.getString("pictureUrl"));
