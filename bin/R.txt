@@ -50,9 +50,10 @@ int drawable item04 0x7f020012
 int drawable item05 0x7f020013
 int drawable maintab_toolbar_bg 0x7f020014
 int drawable tab_item 0x7f020015
-int drawable ticpic_rect 0x7f020016
-int drawable upimage_edit_rect 0x7f020017
-int drawable upimage_edit_summary 0x7f020018
+int drawable textback 0x7f020016
+int drawable ticpic_rect 0x7f020017
+int drawable upimage_edit_rect 0x7f020018
+int drawable upimage_edit_summary 0x7f020019
 int id action_settings 0x7f060041
 int id both 0x7f060003
 int id catalog 0x7f060013

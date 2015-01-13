@@ -60,7 +60,7 @@ public class NewsContent extends Activity {
 		//设置WebView属性，能够执行JavaScript脚本
 		webView.getSettings().setJavaScriptEnabled(true);
         //加载URL内容
-		webView.loadUrl("http://192.168.1.119:8080/Shangbao01/app/android/1");//"http://www.baidu.com");
+		webView.loadUrl("http://120.27.47.167/Shangbao01/app/android/1");//"http://www.baidu.com");
         //设置web视图客户端
 		webView.setWebViewClient(new MyWebViewClient());
     
@@ -131,11 +131,88 @@ public class NewsContent extends Activity {
 			@Override
 			protected Integer doInBackground(Void... params) {
 				// TODO Auto-generated method stub 
-				Log.e("strResult-------0000000", "4+++++++5555");
-				requestAction();
-				Log.e("strResult-------0000000", "4+----------5555");
+				Log.e("strResult-------000", "4+++++++5555");
+				//po();
+				
+				// Create a new HttpClient and Post Header
+				DefaultHttpClient httpclient = new DefaultHttpClient();
+				HttpPost httppost = new HttpPost(postString);
+				// httppost.setHeader("Accept", "application/json");
+				httppost.addHeader("Content-Type", "application/json");
+				Log.e("---000---000---", "hello");
+				try {
+					// // Add your data
+					// List<NameValuePair> nameValuePairs = new
+					// ArrayList<NameValuePair>(3);
+					// nameValuePairs.add(new BasicNameValuePair("content", "12345"));
+					// nameValuePairs.add(new BasicNameValuePair("userName", "Hi"));
+					// nameValuePairs.add(new BasicNameValuePair("newsId", "1"));
+					// httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+					Log.e("---000---000---", "hello");
+					JSONObject obj = new JSONObject();
+					obj.put("content", "54321");//.element("content", "54321");
+					obj.put("userName", "HOHOHO");
+					obj.put("userId", "123");
+					//System.out.println(obj.toString());
+					httppost.setEntity(new StringEntity(obj.toString()));
+
+					// Execute HTTP Post Request
+					HttpResponse response = httpclient.execute(httppost);
+					//System.out.println("resCode = "
+						//	+ response.getStatusLine().getStatusCode()); // 获取响应码
+					Log.e("strResult--line---000"	,""+response.getStatusLine().getStatusCode());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+				}
+				
+				Log.e("strResult-------000", "4+----------5555");
 				return null;
 			}
+			
+			public void po() {
+
+				// Create a new HttpClient and Post Header
+				DefaultHttpClient httpclient = new DefaultHttpClient();
+				HttpPost httppost = new HttpPost(postString);
+				// httppost.setHeader("Accept", "application/json");
+				httppost.addHeader("Content-Type", "application/json");
+				Log.e("---000---000---", "hello");
+				try {
+					// // Add your data
+					// List<NameValuePair> nameValuePairs = new
+					// ArrayList<NameValuePair>(3);
+					// nameValuePairs.add(new BasicNameValuePair("content", "12345"));
+					// nameValuePairs.add(new BasicNameValuePair("userName", "Hi"));
+					// nameValuePairs.add(new BasicNameValuePair("newsId", "1"));
+					// httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+					Log.e("---000---000---", "hello");
+					JSONObject obj = new JSONObject();
+					obj.put("content", "54321");//.element("content", "54321");
+					obj.put("userName", "HOHOHO");
+					obj.put("userId", "123");
+					//System.out.println(obj.toString());
+					httppost.setEntity(new StringEntity(obj.toString()));
+
+					// Execute HTTP Post Request
+					HttpResponse response = httpclient.execute(httppost);
+					//System.out.println("resCode = "
+						//	+ response.getStatusLine().getStatusCode()); // 获取响应码
+					Log.e("strResult--line---000"	,""+response.getStatusLine().getStatusCode());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+				}
+			}
+
 			
 			public void requestAction() 
 			{
@@ -159,7 +236,7 @@ public class NewsContent extends Activity {
 			        p.setHeader("Accept", "application/json");
 			        p.setHeader("Content-type", "application/json");
 			        HttpResponse resp = hc.execute(p);
-			        Log.e("Status line", "" + resp.getStatusLine().getStatusCode());
+			        Log.e("Status line----", "" + resp.getStatusLine().getStatusCode());
 			    } catch (Exception e) 
 			        {e.printStackTrace();}
 
@@ -205,7 +282,7 @@ public class NewsContent extends Activity {
 					postMethod.setEntity(new UrlEncodedFormEntity(params, "utf-8"));
 					HttpResponse response;
 					response = httpClient.execute(postMethod);
-					Log.e("----------8888888", "resCode = " + response.getStatusLine().getStatusCode()); //获取响应码 
+					//Log.e("----------8888888", "resCode = " + response.getStatusLine().getStatusCode()); //获取响应码 
 
 				} catch (ClientProtocolException e) {
 					// TODO Auto-generated catch block
@@ -225,7 +302,7 @@ public class NewsContent extends Activity {
 				HttpPost httppost = new HttpPost(postString); 
 				httppost.addHeader("charset", HTTP.UTF_8);
 				httppost.addHeader("Content-Type", "application/json");
-				Log.e("strResult-------0000000", "4555555555");
+				//Log.e("strResult-------0000000", "4555555555");
 				//实例化  
 		        MultipartEntity me = new MultipartEntity();  
 		        try { 
