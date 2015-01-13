@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.shangbao.MainActivity" >
+
+    
+   <include android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/head"
+       layout="@layout/head"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/imagePager"
+        android:scaleType="fitXY"
+        android:layout_width="fill_parent"
+        android:layout_height="180dp" >
+    </android.support.v4.view.ViewPager>
+
+	
+	
+	    <!-- 定义一个新闻list -->
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/imagePager" >
+      <ListView
+        android:id="@+id/mylist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+     <LinearLayout 
+        android:id="@+id/id"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <EditText android:layout_width="200dp" 
+			android:layout_height="50dp"
+			android:id="@+id/comment"
+			android:imeOptions="actionSend"
+			android:hint="发表评论"
+			android:inputType="text"
+			android:background="@android:drawable/edit_text"/>
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/edit1"
+            android:onClick="click"
+            android:id="@+id/post"
+            android:layout_gravity="center_vertical"/>
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/heart"
+            android:onClick="click"
+            android:id="@+id/like"
+            android:layout_gravity="center_vertical"/>
+      </LinearLayout>
+        
+    <WebView 
+        android:id="@+id/webview"
+        android:layout_above="@id/id"
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent"/>
+        
+    
+
+</RelativeLayout>
